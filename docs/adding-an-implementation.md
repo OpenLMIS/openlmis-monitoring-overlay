@@ -173,7 +173,14 @@ On `olmis-monitoring`:
    cd ~/openlmis-monitoring-overlay && git pull --ff-only
    bin/apply-overlay.sh ~/soldevelo-monitoring
    cd ~/soldevelo-monitoring && bin/render-configs.sh .env && bin/validate.sh .env \
-     && curl -X POST localhost:9093/-/reload
+     && docker compose --env-file .env -f stack/docker-compose.yml up -d --force-recreate alertmanager
+   ```
+   Recreate Alertmanager rather than reloading it: on package versions up to
+   0.12.0, `validate.sh` replaces the rendered file and a running container
+   keeps the old one. Check the route from inside the container:
+   ```sh
+   docker exec soldevelo-monitoring-alertmanager-1 amtool config routes test \
+     --config.file=/etc/alertmanager/alertmanager.yml deployment=mycountry environment=uat
    ```
 3. Give the team Grafana access.
 

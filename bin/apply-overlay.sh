@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Copy this overlay into a soldevelo-monitoring checkout and reload Prometheus.
-# Alertmanager fragments take effect on render-configs.sh + an Alertmanager reload.
+# Alertmanager fragments take effect on render-configs.sh + recreating the alertmanager container.
 # Loki rules land in the ruler's tenant dir as overlay-*.yaml; Loki needs a restart to load them.
 # Copies, not symlinks: the package bind-mounts the overlay dirs into containers
 # and a symlink pointing outside the mount does not resolve there.
