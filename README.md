@@ -46,7 +46,7 @@ cd ~/openlmis-monitoring-overlay && git pull --ff-only
 bin/apply-overlay.sh ~/soldevelo-monitoring       # copies + chmod + prometheus reload
 ```
 
-After an `alertmanager/overlay/` change: `cd ~/soldevelo-monitoring && bin/render-configs.sh .env && curl -X POST localhost:9093/-/reload`.
+After an `alertmanager/overlay/` change: `cd ~/soldevelo-monitoring && bin/render-configs.sh .env && bin/validate.sh .env && docker compose --env-file .env -f stack/docker-compose.yml up -d --force-recreate alertmanager`. A `/-/reload` is not enough on package ≤ 0.12.0: the container keeps the previous file.
 
 Dashboards and blackbox targets are picked up within 30 s; Prometheus rules on
 the reload the script performs. Loki rules need `docker restart` of the Loki
