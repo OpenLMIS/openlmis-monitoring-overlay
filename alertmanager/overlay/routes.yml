@@ -1,0 +1,11 @@
+- matchers:
+    - deployment="gambia"
+    - environment="uat"
+  receiver: slack-gambia-uat
+  routes:
+    - matchers:
+        - severity="critical"
+      receiver: slack-gambia-uat
+      group_wait: 10s
+      group_interval: 5m
+      repeat_interval: 4h
