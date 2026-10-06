@@ -18,9 +18,12 @@ To connect a new implementation, see
 | `core` | `uat` | UAT | https://uat.openlmis.org | `#notifications-core-uat` |
 | `core` | `prod` | Demo | https://demo-v3.openlmis.org | `#notifications-core-demo` |
 | `gambia` | `uat` | UAT | https://uat.elmis.apps.moh.gm | `#notifications-gambia-uat` |
+| `malawi` | `prod` | Production | https://lmis.health.gov.mw | `#notifications-malawi-prod` |
+| `malawi` | `uat` | UAT | https://lmis-uat.health.gov.mw | `#notifications-malawi-uat` |
+| `malawi` | `dev` | DEV | https://lmis-dev.health.gov.mw | — (dev is muted) |
 
 `environment` is the package's fixed enum (`prod|uat|staging|dev`), so the core
-environments are mapped onto it. Gambia's alerts route to its own channels
+environments are mapped onto it. Gambia's and Malawi's alerts route to their own channels
 through `alertmanager/overlay/` (webhooks in the host `.env`). Alerts with no `environment` (the stack's own
 `meta-*` jobs) go to the default webhook, set to the demo channel.
 
@@ -51,5 +54,6 @@ container.
 
 The agents that report here live in
 [`openlmis-deployment/monitoring/alloy`](https://github.com/OpenLMIS/openlmis-deployment/tree/master/monitoring/alloy)
-(core) and
-[`openlmis-gambia-deploy/monitoring/alloy`](https://github.com/gambiamoh/openlmis-gambia-deploy/tree/main/monitoring/alloy) (Gambia).
+(core),
+[`openlmis-gambia-deploy/monitoring/alloy`](https://github.com/gambiamoh/openlmis-gambia-deploy/tree/main/monitoring/alloy) (Gambia) and
+[`mw-openlmis-deployment/monitoring/alloy`](https://github.com/OpenLMIS-Malawi/mw-openlmis-deployment/tree/master/monitoring/alloy) (Malawi).

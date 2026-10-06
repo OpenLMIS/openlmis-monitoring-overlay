@@ -1,0 +1,45 @@
+# Host inventory for AgentAbsent — one stanza per agent host. See
+# soldevelo-monitoring/prometheus/rules/overlay/README.md for why this lives here.
+groups:
+  - name: agent-inventory-malawi
+    rules:
+      - alert: AgentAbsent
+        # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
+        expr: absent(up{job="agent", deployment="malawi", environment="prod", host="malawi-prod"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: malawi
+          environment: prod
+          host: malawi-prod
+        annotations:
+          summary: "Monitoring agent absent: malawi-prod (prod)"
+          description: "No metrics have arrived from the Alloy agent on lmis.health.gov.mw for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+
+      - alert: AgentAbsent
+        expr: absent(up{job="agent", deployment="malawi", environment="uat", host="malawi-uat"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: malawi
+          environment: uat
+          host: malawi-uat
+        annotations:
+          summary: "Monitoring agent absent: malawi-uat (uat)"
+          description: "No metrics have arrived from the Alloy agent on lmis-uat.health.gov.mw for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+
+      - alert: AgentAbsent
+        # environment="dev" routes to the null receiver; kept for Grafana.
+        expr: absent(up{job="agent", deployment="malawi", environment="dev", host="malawi-dev"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: malawi
+          environment: dev
+          host: malawi-dev
+        annotations:
+          summary: "Monitoring agent absent: malawi-dev (dev)"
+          description: "No metrics have arrived from the Alloy agent on lmis-dev.health.gov.mw for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
