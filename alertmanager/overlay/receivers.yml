@@ -5,3 +5,17 @@
       send_resolved: true
       title: *slack_title
       text: *slack_text
+- name: slack-malawi-uat
+  slack_configs:
+    - api_url: "${SLACK_WEBHOOK_URL_MALAWI_UAT}"
+      channel: "${SLACK_CHANNEL_MALAWI_UAT}"
+      send_resolved: true
+      title: *slack_title
+      text: *slack_text
+- name: slack-malawi-prod
+  slack_configs:
+    - api_url: "${SLACK_WEBHOOK_URL_MALAWI_PROD}"
+      channel: "${SLACK_CHANNEL_MALAWI_PROD}"
+      send_resolved: true
+      title: *slack_title
+      text: *slack_text
