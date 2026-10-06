@@ -5,7 +5,10 @@ central monitoring host for OpenLMIS implementations. The base package is
 [`soldevelo-monitoring`](https://github.com/SolDevelo/soldevelo-monitoring);
 this repo holds only what the base deliberately leaves to the deployment.
 
-**Built against package tag `v0.9.0`.** Bump this line when the host moves.
+**Built against package tag `v0.11.0`.** Bump this line when the host moves.
+
+To connect a new implementation, see
+[`docs/adding-an-implementation.md`](docs/adding-an-implementation.md).
 
 ## Deployments
 
