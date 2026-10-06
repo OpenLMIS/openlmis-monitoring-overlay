@@ -21,10 +21,23 @@ Agree on these with the host operators:
 | `environment` per env | `uat`, `prod` | Must be one of `prod`, `uat`, `staging`, `dev`. Map your env names onto it. |
 | `TARGET_NAME` per env | `mycountry-uat` | Becomes the agent's `host` label. Keep it stable. |
 | Slack channel per env | `#notifications-mycountry-uat` | Plus an incoming webhook for each. |
-| Ingest token | — | The host operators hand it over privately. |
+| Ingest token | — | One per implementation, for all its envs. The host operators hand it over privately. |
 
-The host has **one ingest token, shared by every agent**. Whoever holds it can
+Each implementation gets **its own ingest token**, so it can be revoked without
+touching the others. It is not tied to a `deployment`: whoever holds it can
 push metrics and logs under any label. Keep it in the private config repo only.
+
+The host operators issue it before the first agent deploy (package ≥ 0.12.0):
+
+```sh
+cd ~/soldevelo-monitoring
+echo "INGEST_TOKEN_MYCOUNTRY=$(openssl rand -hex 32)" >> .env
+bin/render-configs.sh .env && bin/validate.sh .env \
+  && docker compose --env-file .env -f stack/docker-compose.yml up -d --force-recreate caddy
+```
+
+Add the same line to the `.env` copy in `villagereach/openlmis-config`. To
+revoke, delete the line and run the same render and recreate.
 
 The app host needs Docker 20.10 or newer. Current Alloy images are OCI-only and
 older engines reject them.
@@ -54,7 +67,7 @@ ENVIRONMENT=uat
 TARGET_NAME=mycountry-uat
 INGEST_METRICS_URL=https://olmis-monitoring.soldevelo.com/ingest/prometheus/api/v1/write
 INGEST_LOGS_URL=https://olmis-monitoring.soldevelo.com/ingest/loki/loki/api/v1/push
-INGEST_TOKEN=<from the host operators>
+INGEST_TOKEN=<INGEST_TOKEN_MYCOUNTRY from the host operators>
 LOG_DROP_SERVICES=
 COMPOSE_PROFILES=postgres
 PG_EXPORTER_DSN=postgresql://olmis_monitoring:<password>@<db-host>:5432/open_lmis?sslmode=require
@@ -146,7 +159,8 @@ One PR, same shape as `gambia`:
 
 On `olmis-monitoring`:
 
-1. Add the webhooks to `~/soldevelo-monitoring/.env` (and to its copy in
+1. The ingest token is already in `.env` (see [Before you start](#before-you-start)).
+   Add the webhooks to `~/soldevelo-monitoring/.env` (and to its copy in
    `villagereach/openlmis-config`):
    ```env
    SLACK_WEBHOOK_URL_MYCOUNTRY_UAT=https://hooks.slack.com/services/...
