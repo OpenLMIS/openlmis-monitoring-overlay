@@ -1,0 +1,18 @@
+# Host inventory for AgentAbsent — one stanza per agent host. See
+# soldevelo-monitoring/prometheus/rules/overlay/README.md for why this lives here.
+groups:
+  - name: agent-inventory
+    rules:
+      - alert: AgentAbsent
+        # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
+        expr: absent(up{job="agent", deployment="core", environment="uat", host="core-uat"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: core
+          environment: uat
+          host: core-uat
+        annotations:
+          summary: "Monitoring agent absent: core-uat (uat)"
+          description: "No metrics have arrived from the Alloy agent on uat.openlmis.org for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."

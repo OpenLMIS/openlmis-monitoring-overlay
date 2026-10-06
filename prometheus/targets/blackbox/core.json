@@ -1,0 +1,14 @@
+[
+  {
+    "targets": ["https://test.openlmis.org"],
+    "labels": {"app": "openlmis", "deployment": "core", "environment": "staging", "check": "public"}
+  },
+  {
+    "targets": ["https://uat.openlmis.org"],
+    "labels": {"app": "openlmis", "deployment": "core", "environment": "uat", "check": "public"}
+  },
+  {
+    "targets": ["https://demo-v3.openlmis.org"],
+    "labels": {"app": "openlmis", "deployment": "core", "environment": "prod", "check": "public"}
+  }
+]
