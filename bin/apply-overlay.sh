@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Copy this overlay into a soldevelo-monitoring checkout and reload Prometheus.
+# Alertmanager fragments take effect on render-configs.sh + an Alertmanager reload.
 # Loki rules land in the ruler's tenant dir as overlay-*.yaml; Loki needs a restart to load them.
 # Copies, not symlinks: the package bind-mounts the overlay dirs into containers
 # and a symlink pointing outside the mount does not resolve there.
@@ -10,7 +11,7 @@ umask 022
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PKG="${1:-${HERE}/../soldevelo-monitoring}"
 [[ -f "${PKG}/stack/docker-compose.yml" ]] || { echo "not a soldevelo-monitoring checkout: ${PKG}" >&2; exit 1; }
-for d in prometheus/targets/blackbox prometheus/rules/overlay grafana/dashboards/overlay; do
+for d in prometheus/targets/blackbox prometheus/rules/overlay grafana/dashboards/overlay alertmanager/overlay; do
   mkdir -p "${PKG}/${d}"
   for f in "${HERE}/${d}"/*.*; do
     cp "${f}" "${PKG}/${d}/" && chmod a+r "${PKG}/${d}/$(basename "${f}")"

@@ -14,9 +14,11 @@ this repo holds only what the base deliberately leaves to the deployment.
 | `core` | `staging` | Test | https://test.openlmis.org | `#notifications-core-test` |
 | `core` | `uat` | UAT | https://uat.openlmis.org | `#notifications-core-uat` |
 | `core` | `prod` | Demo | https://demo-v3.openlmis.org | `#notifications-core-demo` |
+| `gambia` | `uat` | UAT | https://uat.elmis.apps.moh.gm | `#notifications-gambia-uat` |
 
 `environment` is the package's fixed enum (`prod|uat|staging|dev`), so the core
-environments are mapped onto it. Alerts with no `environment` (the stack's own
+environments are mapped onto it. Gambia's alerts route to its own channels
+through `alertmanager/overlay/` (webhooks in the host `.env`). Alerts with no `environment` (the stack's own
 `meta-*` jobs) go to the default webhook, set to the demo channel.
 
 | Path | What |
@@ -24,6 +26,7 @@ environments are mapped onto it. Alerts with no `environment` (the stack's own
 | `prometheus/targets/blackbox/*.json` | HTTP probe targets per deployment |
 | `prometheus/rules/overlay/*.yml` | `AgentAbsent` host inventory — added with each agent |
 | `grafana/dashboards/overlay/*.json` | Deployment-specific dashboards |
+| `alertmanager/overlay/*.yml` | Per-deployment Slack routes and receivers |
 | `loki/rules/*.yaml` | Deployment-specific log alerts |
 | `bin/apply-overlay.sh` | Copies the above into a package checkout and reloads Prometheus |
 
@@ -37,9 +40,13 @@ cd ~/openlmis-monitoring-overlay && git pull --ff-only
 bin/apply-overlay.sh ~/soldevelo-monitoring       # copies + chmod + prometheus reload
 ```
 
+After an `alertmanager/overlay/` change: `cd ~/soldevelo-monitoring && bin/render-configs.sh .env && curl -X POST localhost:9093/-/reload`.
+
 Dashboards and blackbox targets are picked up within 30 s; Prometheus rules on
 the reload the script performs. Loki rules need `docker restart` of the Loki
 container.
 
 The agents that report here live in
-[`openlmis-deployment/monitoring/alloy`](https://github.com/OpenLMIS/openlmis-deployment/tree/master/monitoring/alloy).
+[`openlmis-deployment/monitoring/alloy`](https://github.com/OpenLMIS/openlmis-deployment/tree/master/monitoring/alloy)
+(core) and
+[`openlmis-gambia-deploy/monitoring/alloy`](https://github.com/gambiamoh/openlmis-gambia-deploy/tree/main/monitoring/alloy) (Gambia).

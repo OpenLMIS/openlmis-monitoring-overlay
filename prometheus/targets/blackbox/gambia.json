@@ -1,0 +1,6 @@
+[
+  {
+    "targets": ["https://uat.elmis.apps.moh.gm"],
+    "labels": {"app": "openlmis", "deployment": "gambia", "environment": "uat", "check": "public"}
+  }
+]
