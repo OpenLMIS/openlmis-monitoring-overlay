@@ -35,6 +35,7 @@ through `alertmanager/overlay/` (webhooks in the host `.env`). Alerts with no `e
 | `alertmanager/overlay/*.yml` | Per-deployment Slack routes and receivers |
 | `loki/rules/*.yaml` | Deployment-specific log alerts |
 | `bin/apply-overlay.sh` | Copies the above into a package checkout and reloads Prometheus |
+| `bin/stakeholder-dashboards.sh` | Regenerates `stakeholder-<deployment>.json` from the package's *Service availability* dashboard |
 
 Secrets are never here. The host's `.env` lives on the host, with a copy in
 `villagereach/openlmis-config`.
@@ -47,6 +48,11 @@ bin/apply-overlay.sh ~/soldevelo-monitoring       # copies + chmod + prometheus 
 ```
 
 After an `alertmanager/overlay/` change: `cd ~/soldevelo-monitoring && bin/render-configs.sh .env && bin/validate.sh .env && docker compose --env-file .env -f stack/docker-compose.yml up -d --force-recreate alertmanager`. A `/-/reload` is not enough on package ≤ 0.12.0: the container keeps the previous file.
+
+`stakeholder-<deployment>.json` are the package's *Service availability* dashboard with the
+deployment fixed and no variables: Grafana's external (no-login) share link does not support
+template variables. Share these, never the package's `sdm-stakeholder`. Rerun
+`bin/stakeholder-dashboards.sh <package-checkout>` after a package release changes it.
 
 Dashboards and blackbox targets are picked up within 30 s; Prometheus rules on
 the reload the script performs. Loki rules need `docker restart` of the Loki
