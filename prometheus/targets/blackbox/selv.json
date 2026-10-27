@@ -1,0 +1,6 @@
+[
+  {
+    "targets": ["https://test.selv.org.mz"],
+    "labels": {"app": "openlmis", "deployment": "selv", "environment": "staging", "check": "public"}
+  }
+]
