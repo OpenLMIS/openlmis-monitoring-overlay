@@ -1,6 +1,207 @@
 [
   {
-    "targets": ["https://test.selv.org.mz"],
-    "labels": {"app": "openlmis", "deployment": "selv", "environment": "staging", "check": "public"}
+    "targets": [
+      "https://test.selv.org.mz"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "public"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "app-direct",
+      "module": "http_2xx_insecure"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/auth"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "auth",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/referencedata"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "referencedata",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/requisition"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "requisition",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/fulfillment"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "fulfillment",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/notification"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "notification",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/stockmanagement"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "stockmanagement",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/report"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "report",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/cce"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "cce",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/buq"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "buq",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/hapifhir"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "hapifhir",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/diagnostics"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "diagnostics",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/dhis2"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "dhis2-integration",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://selvtestelb-735758692.eu-west-1.elb.amazonaws.com/requisitionbatch"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "selv",
+      "environment": "staging",
+      "check": "service",
+      "service": "requisition-batch",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
   }
 ]
