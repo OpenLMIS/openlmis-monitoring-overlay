@@ -32,6 +32,17 @@
       group_interval: 5m
       repeat_interval: 4h
 - matchers:
+    - deployment="rdc"
+    - environment="uat"
+  receiver: slack-rdc-uat
+  routes:
+    - matchers:
+        - severity="critical"
+      receiver: slack-rdc-uat
+      group_wait: 10s
+      group_interval: 5m
+      repeat_interval: 4h
+- matchers:
     - deployment="selv"
     - environment="staging"
   receiver: slack-selv-staging
