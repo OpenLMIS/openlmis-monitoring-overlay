@@ -22,9 +22,10 @@ To connect a new implementation, see
 | `malawi` | `uat` | UAT | https://lmis-uat.health.gov.mw | `#notifications-malawi-uat` |
 | `malawi` | `dev` | DEV | https://lmis-dev.health.gov.mw | — (dev is muted) |
 | `selv` | `staging` | Test | https://test.selv.org.mz | `#notifications-selv-test` |
+| `rdc` | `uat` | UAT | https://uat.logimev.cd | `#notifications-rdc-uat` |
 
 `environment` is the package's fixed enum (`prod|uat|staging|dev`), so the core
-environments are mapped onto it. Gambia's, Malawi's and SELV's alerts route to their own channels
+environments are mapped onto it. Gambia's, Malawi's, SELV's and RDC's alerts route to their own channels
 through `alertmanager/overlay/` (webhooks in the host `.env`). Alerts with no `environment` (the stack's own
 `meta-*` jobs) go to the default webhook, set to the demo channel.
 
@@ -56,5 +57,6 @@ container.
 The agents that report here live in
 [`openlmis-deployment/monitoring/alloy`](https://github.com/OpenLMIS/openlmis-deployment/tree/master/monitoring/alloy) (Core),
 [`openlmis-gambia-deploy/monitoring/alloy`](https://github.com/gambiamoh/openlmis-gambia-deploy/tree/main/monitoring/alloy) (Gambia),
-[`mw-openlmis-deployment/monitoring/alloy`](https://github.com/OpenLMIS-Malawi/mw-openlmis-deployment/tree/master/monitoring/alloy) (Malawi) and
-[`selv-v3-deployment/monitoring/alloy`](https://github.com/villagereach/selv-v3-deployment/tree/master/monitoring/alloy) (SELV).
+[`mw-openlmis-deployment/monitoring/alloy`](https://github.com/OpenLMIS-Malawi/mw-openlmis-deployment/tree/master/monitoring/alloy) (Malawi),
+[`selv-v3-deployment/monitoring/alloy`](https://github.com/villagereach/selv-v3-deployment/tree/master/monitoring/alloy) (SELV) and
+[`rdc-deployment/monitoring/alloy`](https://github.com/OpenLMIS-RDC/rdc-deployment/tree/master/monitoring/alloy) (RDC).
