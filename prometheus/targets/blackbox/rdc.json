@@ -147,5 +147,15 @@
       "module": "http_2xx_insecure",
       "__scrape_interval__": "60s"
     }
+  },
+  {
+    "targets": [
+      "https://uat-reporting.logimev.cd"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "uat"
+    }
   }
 ]
