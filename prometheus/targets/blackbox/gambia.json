@@ -1,6 +1,165 @@
 [
   {
-    "targets": ["https://uat.elmis.apps.moh.gm"],
-    "labels": {"app": "openlmis", "deployment": "gambia", "environment": "uat", "check": "public"}
+    "targets": [
+      "https://uat.elmis.apps.moh.gm"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "public"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "app-direct",
+      "module": "http_2xx_insecure"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/auth"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "auth",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/referencedata"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "referencedata",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/requisition"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "requisition",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/stockmanagement"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "stockmanagement",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/fulfillment"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "fulfillment",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/notification"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "notification",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/report"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "report",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/cce"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "cce",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/buq"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "buq",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-uat-elb-1033421399.eu-central-1.elb.amazonaws.com/diagnostics"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "gambia",
+      "environment": "uat",
+      "check": "service",
+      "service": "diagnostics",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
   }
 ]
