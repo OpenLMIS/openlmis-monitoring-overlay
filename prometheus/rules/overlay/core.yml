@@ -16,3 +16,27 @@ groups:
         annotations:
           summary: "Monitoring agent absent: core-uat (uat)"
           description: "No metrics have arrived from the Alloy agent on uat.openlmis.org for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+      - alert: AgentAbsent
+        expr: absent(up{job="agent", deployment="core", environment="staging", host="core-test"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: core
+          environment: staging
+          host: core-test
+        annotations:
+          summary: "Monitoring agent absent: core-test (staging)"
+          description: "No metrics have arrived from the Alloy agent on test.openlmis.org for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+      - alert: AgentAbsent
+        expr: absent(up{job="agent", deployment="core", environment="prod", host="core-demo"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: core
+          environment: prod
+          host: core-demo
+        annotations:
+          summary: "Monitoring agent absent: core-demo (prod)"
+          description: "No metrics have arrived from the Alloy agent on demo-v3.openlmis.org for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
