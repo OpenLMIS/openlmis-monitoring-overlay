@@ -16,3 +16,16 @@ groups:
         annotations:
           summary: "Monitoring agent absent: gambia-uat (uat)"
           description: "No metrics have arrived from the Alloy agent on uat.elmis.apps.moh.gm for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+      - alert: AgentAbsent
+        # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
+        expr: absent(up{job="agent", deployment="gambia", environment="prod", host="gambia-prod"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: gambia
+          environment: prod
+          host: gambia-prod
+        annotations:
+          summary: "Monitoring agent absent: gambia-prod (prod)"
+          description: "No metrics have arrived from the Alloy agent on elmis.apps.moh.gm for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."

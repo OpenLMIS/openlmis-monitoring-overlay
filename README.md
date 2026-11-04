@@ -17,6 +17,7 @@ To connect a new implementation, see
 | `core` | `staging` | Test | https://test.openlmis.org | `#notifications-core-test` |
 | `core` | `uat` | UAT | https://uat.openlmis.org | `#notifications-core-uat` |
 | `core` | `prod` | Demo | https://demo-v3.openlmis.org | `#notifications-core-demo` |
+| `gambia` | `prod` | Production | https://elmis.apps.moh.gm | `#notifications-gambia-prod` |
 | `gambia` | `uat` | UAT | https://uat.elmis.apps.moh.gm | `#notifications-gambia-uat` |
 | `malawi` | `prod` | Production | https://lmis.health.gov.mw | `#notifications-malawi-prod` |
 | `malawi` | `uat` | UAT | https://lmis-uat.health.gov.mw | `#notifications-malawi-uat` |
