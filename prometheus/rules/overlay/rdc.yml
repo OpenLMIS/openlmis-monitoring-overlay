@@ -33,6 +33,34 @@ groups:
 
       - alert: AgentAbsent
         # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
+        expr: absent(up{job="agent", deployment="rdc", environment="prod", host="rdc-prod"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: rdc
+          environment: prod
+          host: rdc-prod
+        annotations:
+          summary: "Monitoring agent absent: rdc-prod (prod)"
+          description: "No metrics have arrived from the Alloy agent on www.logimev.cd for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+
+      - alert: AgentAbsent
+        # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
+        expr: absent(up{job="agent", deployment="rdc", environment="prod", host="rdc-prod-reporting"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: rdc
+          environment: prod
+          host: rdc-prod-reporting
+        annotations:
+          summary: "Monitoring agent absent: rdc-prod-reporting (prod)"
+          description: "No metrics have arrived from the Alloy agent on reporting.logimev.cd for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+
+      - alert: AgentAbsent
+        # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
         # environment="dev" routes to the null receiver; kept for Grafana.
         expr: absent(up{job="agent", deployment="rdc", environment="dev", host="rdc-dev"})
         for: 5m

@@ -23,6 +23,7 @@ To connect a new implementation, see
 | `malawi` | `uat` | UAT | https://lmis-uat.health.gov.mw | `#notifications-malawi-uat` |
 | `malawi` | `dev` | DEV | https://lmis-dev.health.gov.mw | — (dev is muted) |
 | `selv` | `staging` | Test | https://test.selv.org.mz | `#notifications-selv-test` |
+| `rdc` | `prod` | Production | https://www.logimev.cd | `#notifications-rdc-prod` |
 | `rdc` | `uat` | UAT | https://uat.logimev.cd | `#notifications-rdc-uat` |
 | `rdc` | `dev` | DEV | https://dev.logimev.cd | — (dev is muted) |
 

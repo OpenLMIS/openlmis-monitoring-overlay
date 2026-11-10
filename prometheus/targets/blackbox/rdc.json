@@ -160,6 +160,165 @@
   },
   {
     "targets": [
+      "https://www.logimev.cd"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "public"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "app-direct",
+      "module": "http_2xx_insecure"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/auth"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "auth",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/notification"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "notification",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/referencedata"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "referencedata",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/report"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "report",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/stockmanagement"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "stockmanagement",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/fulfillment"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "fulfillment",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/requisition"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "requisition",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/hapifhir"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "hapifhir",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://elmis-prod-nlb-285a013a8a471f9c.elb.eu-central-1.amazonaws.com/cce"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod",
+      "check": "service",
+      "service": "cce",
+      "module": "http_2xx_insecure",
+      "__scrape_interval__": "60s"
+    }
+  },
+  {
+    "targets": [
+      "https://reporting.logimev.cd"
+    ],
+    "labels": {
+      "app": "openlmis",
+      "deployment": "rdc",
+      "environment": "prod"
+    }
+  },
+  {
+    "targets": [
       "https://dev.logimev.cd"
     ],
     "labels": {
