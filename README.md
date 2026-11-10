@@ -24,6 +24,7 @@ To connect a new implementation, see
 | `malawi` | `dev` | DEV | https://lmis-dev.health.gov.mw | — (dev is muted) |
 | `selv` | `staging` | Test | https://test.selv.org.mz | `#notifications-selv-test` |
 | `rdc` | `uat` | UAT | https://uat.logimev.cd | `#notifications-rdc-uat` |
+| `rdc` | `dev` | DEV | https://dev.logimev.cd | — (dev is muted) |
 
 `environment` is the package's fixed enum (`prod|uat|staging|dev`), so the core
 environments are mapped onto it. Gambia's, Malawi's, SELV's and RDC's alerts route to their own channels

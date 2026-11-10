@@ -30,3 +30,18 @@ groups:
         annotations:
           summary: "Monitoring agent absent: rdc-uat-reporting (uat)"
           description: "No metrics have arrived from the Alloy agent on uat-reporting.logimev.cd for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+
+      - alert: AgentAbsent
+        # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
+        # environment="dev" routes to the null receiver; kept for Grafana.
+        expr: absent(up{job="agent", deployment="rdc", environment="dev", host="rdc-dev"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: rdc
+          environment: dev
+          host: rdc-dev
+        annotations:
+          summary: "Monitoring agent absent: rdc-dev (dev)"
+          description: "No metrics have arrived from the Alloy agent on dev.logimev.cd (app + reporting stack) for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
