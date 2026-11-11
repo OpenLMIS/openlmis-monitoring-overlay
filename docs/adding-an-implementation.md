@@ -166,6 +166,9 @@ On `olmis-monitoring`:
    SLACK_WEBHOOK_URL_MYCOUNTRY_UAT=https://hooks.slack.com/services/...
    SLACK_CHANNEL_MYCOUNTRY_UAT=#notifications-mycountry-uat
    ```
+   and add `mycountry:OpenLMIS MyCountry` to `STAKEHOLDER_DEPLOYMENTS`, which
+   gives the implementation its own *Service availability* copy in the
+   **Shared externally** folder.
    Do this **before** applying the overlay. A variable missing from `.env`
    stays a literal `${...}` in the rendered config and Alertmanager rejects it.
 2. Apply:
@@ -182,7 +185,10 @@ On `olmis-monitoring`:
    docker exec soldevelo-monitoring-alertmanager-1 amtool config routes test \
      --config.file=/etc/alertmanager/alertmanager.yml deployment=mycountry environment=uat
    ```
-3. Give the team Grafana access.
+3. Give the team Grafana access. For a no-login link for the client, open
+   *Service availability — OpenLMIS MyCountry* (folder **Shared externally**)
+   → Share → Share externally. Never share the package's *Service
+   availability*: its variables do not work on an external share.
 
 ## 7. Done when
 
