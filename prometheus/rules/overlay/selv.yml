@@ -5,6 +5,20 @@ groups:
     rules:
       - alert: AgentAbsent
         # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
+        expr: absent(up{job="agent", deployment="selv", environment="prod", host="selv-prod"})
+        for: 5m
+        labels:
+          severity: critical
+          app: openlmis
+          deployment: selv
+          environment: prod
+          host: selv-prod
+        annotations:
+          summary: "Monitoring agent absent: selv-prod (prod)"
+          description: "No metrics have arrived from the Alloy agent on www.selv.org.mz for 5m. The host, the agent, or the path to the monitoring host is down — everything else reported for this host is stale."
+
+      - alert: AgentAbsent
+        # `for` must stay shorter than ServiceDown (10m) / ServiceAbsent (30m).
         expr: absent(up{job="agent", deployment="selv", environment="staging", host="selv-test"})
         for: 5m
         labels:

@@ -22,6 +22,7 @@ To connect a new implementation, see
 | `malawi` | `prod` | Production | https://lmis.health.gov.mw | `#notifications-malawi-prod` |
 | `malawi` | `uat` | UAT | https://lmis-uat.health.gov.mw | `#notifications-malawi-uat` |
 | `malawi` | `dev` | DEV | https://lmis-dev.health.gov.mw | — (dev is muted) |
+| `selv` | `prod` | Production | https://www.selv.org.mz | `#notifications-selv-prod` |
 | `selv` | `staging` | Test | https://test.selv.org.mz | `#notifications-selv-test` |
 | `rdc` | `prod` | Production | https://www.logimev.cd | `#notifications-rdc-prod` |
 | `rdc` | `uat` | UAT | https://uat.logimev.cd | `#notifications-rdc-uat` |
